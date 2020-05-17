@@ -1,6 +1,6 @@
 {
-  "name": "@shower/shower",
-  "description": "Shower HTML presentation engine",
+  "name": "bfi-thesis-presentation",
+  "description": "Presentation for BFI thesis",
   "version": "3.0.0",
   "author": {
     "name": "Vadim Makeev",
