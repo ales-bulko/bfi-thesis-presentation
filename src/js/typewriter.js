@@ -59,5 +59,5 @@ function type(element, finalString, i, isTag, currentString) {
     if (isTag) return type(element, finalString, i, isTag, currentString);
     setTimeout(function () {
         type(element, finalString, i, isTag, currentString)
-    }, 50);
+    }, 10);
 }

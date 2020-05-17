@@ -24,6 +24,19 @@
             height: 65%;
         }
 
+        .idea-keyword {
+            color: #0033b3;
+        }
+
+        .idea-string {
+            color: #067d17;
+        }
+
+        .idea-special {
+            color: #871094;
+            font-style: italic;
+        }
+
         .slide pre code {
             font-size: 0.7em;
         }
@@ -31,6 +44,24 @@
         .slide pre * {
             font-size: inherit;
         }
+
+/*        .slide pre code:not(:only-child).mark {
+            background-color: var(--color-yellow);
+        }*/
+
+        .slide pre.idea-like code:not(:only-child)::before {
+            margin-left: -4em;
+        }
+
+        .slide pre.idea-like code:not(:only-child).execute::before {
+            margin-left: -4em;
+            content: counter(code, decimal-leading-zero) '. ' url("pictures/execute.svg");
+        }
+
+        .slide pre code {
+            width: auto;
+        }
+
     </style>
 </head>
 <body class="shower list">
@@ -159,50 +190,38 @@
     <h2>Tvorba zdrojovych suborov</h2>
     <div class="columns two typewriter-content" hidden>
         <pre>
-            <code><span style="color:#0033b3;">model </span>Task</code>
-            <code>  name:string label=<span style="color:#067d17;">&quot;Task name&quot; </span> matches=<span
-                style="color:#067d17;">&quot;[A-Za-z ]{1,20}&quot; </span></code>
-            <code>  state:State label=<span style="color:#067d17;">&quot;Task state&quot; </span></code>
-            <code>  categories:Category[] label=<span style="color:#067d17;">&quot;Task categories&quot; </span></code>
+            <code><span class="idea-keyword">model </span>Task</code>
+            <code>  name:string label=<span class="idea-string">&quot;Task name&quot; </span> matches=<span
+                class="idea-string">&quot;[A-Za-z ]{1,20}&quot; </span></code>
+            <code>  state:State label=<span class="idea-string">&quot;Task state&quot; </span></code>
+            <code>  categories:Category[] label=<span class="idea-string">&quot;Task categories&quot; </span></code>
             <code>  user:User</code>
             <code>....</code>
-            <code><span style="color:#0033b3;">enum </span>State [Todo,InProgress,Done]</code>
-            <code><span style="color:#0033b3;">role </span>User</code>
-            <code>  <span style="color:#0033b3;">can </span>manage Task <span style="color:#0033b3;">where </span>.user.name: <span
-                style="color:#871094;font-style:italic;">#username</span></code>
-            <code>  <span style="color:#0033b3;">can </span>read Category</code>
-            <code>  <span style="color:#0033b3;">can </span>read User <span
-                style="color:#0033b3;">where </span>.name: <span
-                style="color:#871094;font-style:italic;">#username</code>
+            <code><span class="idea-keyword">enum </span>State [Todo,InProgress,Done]</code>
+            <code><span class="idea-keyword">role </span>User</code>
+            <code>  <span class="idea-keyword">can </span>manage Task <span
+                class="idea-keyword">where </span>.user.name: <span class="idea-special">#username</span></code>
+            <code>  <span class="idea-keyword">can </span>read Category</code>
+            <code>  <span class="idea-keyword">can </span>read User <span class="idea-keyword">where </span>.name: <span
+                class="idea-special">#username</span></code>
             <code>....</code>
         </pre>
 
-        <pre>
-            <code>name: test-todo</code>
-            <code>destination_path: C:\Project\Java\test-todo\generated</code>
-            <code>database:</code>
-            <code>  url: ./test</code>
-            <code>  schema: data</code>
-            <code>  user: root</code>
-            <code>  pass: root</code>
-            <code>  driver: h2</code>
-            <code>generators:</code>
-            <code>  - generatorName: springboot</code>
-            <code>    groupId: sk.tuke.ales.bulko</code>
-            <code>    artifactId: bfi-example-springboot</code>
-            <code>    runMvnPackage: true</code>
-            <code>    port: 8080</code>
-            <code>  - generatorName: angular</code>
-            <code>    projectName: bfi-example-angular</code>
-            <code>    backendUrl: http://localhost:8080</code>
-            <code>    backendDevUrl: http://localhost:8080</code>
-            <code>    runNpmInstall: false</code>
-            <code>    runGraphqlCodegen: true</code>
-            <code>kubernetes:</code>
-            <code>  docker-repository:</code>
-            <code>    server-url: git.foo.bar.baz.com:4567</code>
-            <code>    username: gitlab-ci-token</code>
-            <code>    password: xca386s91gf3s1vc3r84</code>
+        <pre class="idea-like">
+            <code><span class="idea-keyword">name</span>: test-todo</code>
+            <code><span class="idea-keyword">destination_path</span>: generated</code>
+            <code><span class="idea-keyword">database</span>:</code>
+            <code>....</code>
+            <code class="execute"><span class="idea-keyword">generators</span>:</code>
+            <code class="execute">  - <span class="idea-keyword">generatorName</span>: springboot</code>
+            <code>    <span class="idea-keyword">groupId</span>: sk.tuke.ales.bulko</code>
+            <code>    <span class="idea-keyword">artifactId</span>: bfi-example-springboot</code>
+            <code>    <span class="idea-keyword">runMvnPackage</span>: true</code>
+            <code>    <span class="idea-keyword">port</span>: 8080</code>
+            <code class="execute">  - <span class="idea-keyword">generatorName</span>: angular</code>
+            <code>    ....</code>
+
+
         </pre>
 
 
