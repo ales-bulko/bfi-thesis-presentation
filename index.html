@@ -41,6 +41,11 @@
             font-size: 0.7em;
         }
 
+        /*        .slide {
+                    display: flex;
+                    flex-direction: column;
+                }*/
+
         .slide pre * {
             font-size: inherit;
         }
@@ -73,13 +78,14 @@
 
 <section class="slide" id="cover">
     <h2 class="">Doménovo-špecifický jazyk pre vývoj webových aplikácií II</h2>
-    <p class="abstract">Rozsirenie systemu pre <u>generovanie</u> webovej aplikacie na zaklade domenoveho <u>modelu</u>
-        vyjadreneho pomocou DSL BFI</p>
+    <p class="abstract">Rozšírenie systému pre <u>generovanie</u> webovej aplikácie na základe doménového <u>modelu</u>
+        vyjadreného pomocou DSL BFI</p>
+
     <p class="description"></p>
     <div class="footer">
         <p class="authors">
-            Autor: Ales Bulko<br>
-            Veduci: Sergej Chodarev
+            Autor: Bc. Aleš Buľko<br>
+            Veduci: Ing. Sergej Chodarev PhD.
         </p>
         <div class="organization">
             Katedra počítačov a informatiky<br>
@@ -141,53 +147,136 @@
 <section class="slide">
     <div class="columns two">
         <div>
-            <h2>Problem</h2>
+            <h2>Problém</h2>
             <ul>
-                <li>opakovane cinnosti pri vyvoji</li>
-                <li>viacere casti systemu, zavisle od 1 domenoveho modelu -> vznik inkonzistencii</li>
-                <li>slaba pouzivanost nastrojov pre dizajn SW</li>
+                <li><b>opakovanie</b> činností pri vývoji webovej aplikácie</li>
+                <li>viaceré časti systému <b>závislé</b> od 1 doménového modelu &rarr; vznik <b>inkonzistencií</b></li>
+                <li>slabá používanosť nástrojov pre <b>návrh</b> SW</li>
             </ul>
         </div>
         <div class="next">
-            <h2>Riesenie</h2>
+            <h2>Riešenie</h2>
             <ul>
-                <li>automatizacia</li>
-                <li>generativne programovanie</li>
-                <li>podporne nastroje</li>
+                <li><b>generovanie</b> kódu na základe doménového modelu</li>
+                <li>vytvorenie <b>modulárneho</b> systému</li>
+                <li>podporné nástroje</li>
             </ul>
         </div>
     </div>
 </section>
 
 <section class="slide">
+    <h2>Predošlá práca</h2>
+    <div class="swim-lane">
+        <div class="element-wrapper">
+            <img src="pictures/insert_drive_file-black-18dp.svg" alt="BFI subor" width="100px"/>
+            <div>
+                Doménový model<br> BFI
+            </div>
+        </div>
+        <div class="vertical">
+            <span style="font-size: 3em">&rarr;</span>
+            <div style="display: flex; margin-top: -30px;align-items: start">
+                <img src="pictures/short_text-black-18dp.svg" width="35px"/>
+                <span style="font-size: 0.8em">príkaz</span>
+            </div>
+
+        </div>
+
+        <div class="vertical">
+            <div class="horizontal" style="margin-bottom: 5%">
+                <div class="element-wrapper">
+                    <img src="pictures/settings-black-18dp.svg" alt="Generator" height="100px"/>
+                    <div>Generátor webovej vrstvy</div>
+                </div>
+                <span style="font-size: 3em">&rarr;</span>
+                <div class="element-wrapper">
+                    <img src="pictures/code-black-18dp.svg" alt="BFI subor" height="100px"/>
+                    <div>Webová aplikácia</div>
+                </div>
+            </div>
+            <div class="horizontal">
+                <div class="element-wrapper">
+                    <img src="pictures/settings-black-18dp.svg" alt="Generator" height="100px"/>
+                    <div>Generátor serverovej vrstvy</div>
+                </div>
+                <span style="font-size: 3em">&rarr;</span>
+                <div class="element-wrapper">
+                    <img src="pictures/code-black-18dp.svg" alt="BFI subor" height="100px"/>
+                    <div>Serverová aplikácia</div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <style>
+        .swim-lane {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            position: relative;
+            align-items: center;
+            /*top: 5%;*/
+        }
+
+        .element-wrapper {
+            text-align: center;
+            margin: 5px;
+        }
+
+        .vertical {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .horizontal {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+
+        /*#generators {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }*/
+    </style>
+</section>
+
+<section class="slide">
     <h2>Postup</h2>
     <div class="two-columns">
         <ol>
-            <li>analyza aktualneho stavu systemu BFI</li>
-            <li>refaktorizacia s cielom zlepsenia modularity</li>
-            <li>rozsirenie jazyka BFI
-                <ol>
-                    <li>podpora enumeracnych typov</li>
-                    <li>kontrola obsahu atributov (field constraints)</li>
-                </ol>
-            </li>
-            <li>zlepsenie modularity riesenia</li>
-            <li>pridanie funkcionalit
+            <li><b>refaktorizácia</b> s cieľom zlepšenia modularity a rozšíriteľnosti</li>
+            <li><b>rozšírenie</b> jazyka BFI
                 <ul>
-                    <li>podpora DB migracii</li>
-                    <li>podpora DevOps</li>
-                    <li>podpora kontroly pristupu k zdrojom</li>
+                    <li>podpora enumeračných typov</li>
+                    <li>kontrola obsahu atribútov (<i>field constraints</i>)</li>
+                    <li>podpora ABAC pravidiel</li>
                 </ul>
             </li>
-            <li>zlepsenie pouzitelnosti riesenia</li>
-            <li>vytvorenie podpornych nastrojov</li>
+            <li><b>štandardizácia</b> rozhrania &rarr; GraphQL</li>
+            <li>pridanie <b>funkcionality</b>
+                <ul>
+                    <li>podpora DB migrácií</li>
+                    <li>podpora DevOps</li>
+                    <li>podpora kontroly prístupu k zdrojom</li>
+                </ul>
+            </li>
+            <li>zlepšenie <b>použiteľnosti</b> riešenia
+                <ul>
+                    <li>konfiguračný súbor</li>
+                    <li>Jetbrains zásuvný modul</li>
+                </ul>
         </ol>
     </div>
     <p class="note">BFI - Backend-frontend interface</p>
 </section>
 
 <section class="slide typewriter-slide">  <!--typewriter-slide-->
-    <h2>Tvorba zdrojovych suborov</h2>
+    <h2>Zdrojové súbory v IDE Jetbrains</h2>
     <div class="columns two typewriter-content" hidden>
         <div>
             <!--            <p class="note">Domenovy model vyjadreny pomocou BFI (*.bfi)</p>-->
@@ -232,11 +321,28 @@
 </section>
 
 <section class="slide">
-    <h2 class="shout">Dakujem za pozornost</h2>
+
 </section>
 
 <section class="slide">
-    <h2>Otazky oponenta</h2>
+    <div>
+        <h2>Výsledky práce</h2>
+        Úspešné vytvorenie webovej aplikácie respondentom v priebehu <b>2 hodín</b>.
+        <h2>Prínos práce</h2>
+        <ul>
+            <li><b>koncept</b> používateľsky prijateľného generatívneho programovania</li>
+            <li><b>zefektívnenie</b> vývoja webovej aplikácie</li>
+            <li>vytvorenie <b>modulárneho</b> riešenia pre generovanie kódu na základe doménového <b>modelu</b></li>
+        </ul>
+    </div>
+</section>
+
+<section class="slide">
+    <h2 class="shout">Ďakujem za pozornosť</h2>
+</section>
+
+<section class="slide">
+    <h2>Otázky oponenta</h2>
     <figure>
         <blockquote>
             <div style="margin-left: 1em">
@@ -251,8 +357,8 @@
                         webových aplikácií. V práci spomínate vykonanie tohto bodu, mohli by ste však
                         podrobnejšie vysvetliť, akým postupom ste vykonali túto analýzu a k akým výsledkom ste prišli?
                     </li>
+                </ol>
             </div>
-            </ol>
         </blockquote>
         <figcaption>Ing. Michaela Bačíková, PhD</figcaption>
     </figure>
